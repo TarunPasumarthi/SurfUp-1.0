@@ -1,0 +1,89 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>SurfUp - Board Selection</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+        <script>
+            var sec = 0;
+            function pad ( val ) { return val > 9 ? val : "0" + val; }
+            setInterval( function(){
+                //var sec=pad(++sec%60);
+                //var min=pad(parseInt(sec/60,10));
+                document.getElementById("seconds").innerHTML=pad(++sec%60);
+                document.getElementById("minutes").innerHTML=pad(parseInt(sec/60,10));
+                if(sec==10){
+                    document.getElementById("end_but").style.opacity = "1.0";
+                }
+            }, 1000);
+            
+            function end(){
+                if(sec>10){
+                    var min=parseInt(sec/60)
+                    var secs= sec%60;
+                    if(secs<10){
+                        secs="0"+secs;
+                    }
+                    localStorage.setItem("seconds",secs);
+                    localStorage.setItem("minutes",min);
+                    window.location.href = "./surf_up_end.html";
+                }
+            }
+        </script>
+	</head>
+	<body class="is-preload" onload="set_comb()">
+
+		<!-- Sidebar-->
+			<section id="sidebar">
+				<div class="inner">
+					<nav>
+						<ul>
+							<li><a href="#intro">Welcome</a></li>
+							<li><a href="#one">Who we are</a></li>
+							<li><a href="#two">What we do</a></li>
+							<li><a href="#three">Surf</a></li>
+						</ul>
+					</nav>
+				</div>
+			</section>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<section id="main" class="wrapper" style="height: 100vh">
+						<div class="inner">
+                            <center><h1 class="major">Ride Details</h1></center>
+                            <p><b>Duration:</b> First 30 seconds are free.</p>
+                            <div style="background: black; opacity: 0.7"><center><hr><h1><span id="minutes">00</span>:<span id="seconds">00</span></h1><hr></center></div>
+                            <p><b>Combination:</b></p>
+                            <div style="background: black; opacity: 0.7"><center><hr><h1 id="combo">00-00-00</h1><hr></center></div>
+                            <p class="button submit fit" onclick="end();" style="opacity: 0.0" id="end_but">End Session</p>
+						</div>
+					</section>
+
+			</div>
+
+		<!-- Footer
+			<footer id="footer" class="wrapper alt">
+				<div class="inner">
+					<ul class="menu">
+						<li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+					</ul>
+				</div>
+			</footer>-->
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+			<script src="js/my.js"></script>
+
+	</body>
+</html>
