@@ -25,25 +25,29 @@ function set_comb(){
     var board= localStorage.getItem("board");
     var combo;
     if(board=="Board 1"){
-        combo="01-01-01";
+        combo="01-01-01-02";
     }
     else if(board=="Board 2"){
-        combo="02-02-02";
+        combo="02-02-02-03";
     }
     else if(board=="Board 3"){
-        combo="03-03-03";
+        combo="03-03-03-04";
     }
     else if(board=="Board 4"){
-        combo="04-04-04";
+        combo="04-04-04-05";
     }
     else if(board=="Board 5"){
-        combo="05-05-05";
+        combo="05-05-05-06";
     }
     else if(board=="Board 6"){
-        combo="06-06-06";
+        combo="06-06-06-07";
     }
 
     document.getElementById("combo").innerHTML = combo;
+    
+    var seconds = new Date().getTime() / 1000;
+    seconds=""+seconds;
+    localStorage.setItem("start",seconds)
 }
 function set_end(){
     var min=localStorage.getItem("minutes");

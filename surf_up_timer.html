@@ -12,7 +12,10 @@
             setInterval( function(){
                 //var sec=pad(++sec%60);
                 //var min=pad(parseInt(sec/60,10));
-                document.getElementById("seconds").innerHTML=pad(++sec%60);
+                var start= parseInt(localStorage.getItem("start"));
+                var now = parseInt(new Date().getTime() / 1000);
+                sec=now-start;
+                document.getElementById("seconds").innerHTML=pad(sec%60);
                 document.getElementById("minutes").innerHTML=pad(parseInt(sec/60,10));
                 if(sec==10){
                     document.getElementById("end_but").style.opacity = "1.0";
@@ -21,6 +24,7 @@
             
             function end(){
                 if(sec>10){
+                    sec=sec-30;
                     var min=parseInt(sec/60)
                     var secs= sec%60;
                     if(secs<10){
