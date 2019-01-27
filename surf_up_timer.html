@@ -17,13 +17,13 @@
                 sec=now-start;
                 document.getElementById("seconds").innerHTML=pad(sec%60);
                 document.getElementById("minutes").innerHTML=pad(parseInt(sec/60,10));
-                if(sec==10){
+                if(sec==300){
                     document.getElementById("end_but").style.opacity = "1.0";
                 }
             }, 1000);
             
             function end(){
-                if(sec>10){
+                if(sec>300){
                     sec=sec-30;
                     var min=parseInt(sec/60)
                     var secs= sec%60;
