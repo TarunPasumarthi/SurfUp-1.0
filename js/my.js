@@ -15,12 +15,16 @@ function boardSelection() {
 function select(id){
     if(confirm("Looks like you are ready to rent "+id+". You will be charged $0.30 per minute")){
         localStorage.setItem("board",id);
+        var seconds = new Date().getTime() / 1000;
+        seconds=""+seconds;
+        localStorage.setItem("start",seconds)
         window.location.href = "./surf_up_timer.html";
     }
 }
 function unavailable(id){
     alert(id+" is unavailable. Please make another selection.")
 }
+function pad ( val ) { return val > 9 ? val : "0" + val; }
 function set_comb(){
     var board= localStorage.getItem("board");
     var combo;
@@ -45,9 +49,11 @@ function set_comb(){
 
     document.getElementById("combo").innerHTML = combo;
     
-    var seconds = new Date().getTime() / 1000;
-    seconds=""+seconds;
-    localStorage.setItem("start",seconds)
+    var start= parseInt(localStorage.getItem("start"));
+    var now = parseInt(new Date().getTime() / 1000);
+    sec=now-start;
+    document.getElementById("seconds").innerHTML=pad(sec%60);
+    document.getElementById("minutes").innerHTML=pad(parseInt(sec/60,10));
 }
 function set_end(){
     var min=localStorage.getItem("minutes");
