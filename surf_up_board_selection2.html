@@ -1,0 +1,130 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>SurfUp - Board Selection</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+        <script src="https://rawgit.com/sitepoint-editors/jsqrcode/master/src/qr_packed.js">
+        </script>
+        <script>
+            function openQRCamera(node) {
+              var reader = new FileReader();
+              reader.onload = function() {
+                node.value = "";
+                qrcode.callback = function(res) {
+                  if(res instanceof Error) {
+                    alert("No QR code found. Please make sure the QR code is within the camera's frame and try again.");
+                  } else {
+                    node.parentNode.previousElementSibling.previousElementSibling.value = res;
+                  }
+                };
+                qrcode.decode(reader.result);
+              };
+              reader.readAsDataURL(node.files[0]);
+            }
+        </script>
+        <style>
+            /*.qrcode-text {
+              box-sizing: border-box;
+              vertical-align: middle;
+            }
+            .qrcode-text-btn {
+              display: none;
+            }*/
+
+            /*@media only screen and (max-device-width:750px) {*/
+
+                .qrcode-text {
+                  padding-right: 1.7em;
+                  margin-right: 0;
+                  vertical-align: middle;
+                }
+
+                .qrcode-text + .qrcode-text-btn {
+                  width: 1.7em;
+                  /*margin-left: -1.7em;*/
+                  vertical-align: middle;
+                }
+
+                .qrcode-text-btn {
+                    display:inline-block; 
+                    /*background:url(https://static.thenounproject.com/png/1433173-200.png) 50% 50% no-repeat; 
+                    /*height:1em; 
+                    width:1.7em; 
+                    /*margin-left:-1.7em; */
+                    cursor:pointer
+                }
+
+                .qrcode-text-btn > input[type=file] {
+                    position:absolute; 
+                    overflow:hidden; 
+                    width:1px; 
+                    height:1px; 
+                    opacity:0
+                }
+            /*}*/
+        </style>
+	</head>
+	<body class="is-preload">
+    <div >
+		<!-- Sidebar-->
+			<section id="sidebar">
+				<div class="inner">
+					<nav>
+						<ul>
+							<li><a href="#intro">Welcome</a></li>
+							<li><a href="#one">Who we are</a></li>
+							<li><a href="#two">What we do</a></li>
+							<li><a href="#three">Surf</a></li>
+						</ul>
+					</nav>
+				</div>
+			</section>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<section id="main" class="wrapper" style="height: 100vh">
+						<div class="inner" style="height: 75%">
+							<center><h1 class="major">Select Board</h1></center>
+                            <p>Click button to scan, or manually enter code</p>
+                            <input type=text size=16 placeholder="Enter QR Code" class=qrcode-text id="num">
+                            <br>
+                            <label class="qrcode-text-btn button fit">Scan
+                                <input type=file 
+                                    accept="image/*" 
+                                    capture=environment 
+                                    onchange="openQRCamera(this);" 
+                                    tabindex=-1>
+                            </label>
+						</div>
+                        <div class="inner"><p class="button primary fit" onclick="select2();">Confirm Borad</p></div>
+					</section>
+                    
+			</div>
+
+		<!-- Footer
+			<footer id="footer" class="wrapper alt">
+				<div class="inner">
+					<ul class="menu">
+						<li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+					</ul>
+				</div>
+			</footer>-->
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+			<script src="js/my.js"></script>
+        
+    </div>
+	</body>
+</html>
